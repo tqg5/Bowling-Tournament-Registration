@@ -1,0 +1,21 @@
+{
+    "presets": [
+        [
+            "babel-preset-gatsby",
+            {
+                "targets": {
+                    "browsers": [">0.25%", "not dead"]
+                },
+                "reactRuntime": "automatic"
+            }
+        ],
+        [
+            "@babel/preset-react",
+            {
+                "importSource": "theme-ui", // or '@theme-ui/core'
+                "runtime": "automatic",
+                "throwIfNamespace": false
+            }
+        ]
+    ]
+}
