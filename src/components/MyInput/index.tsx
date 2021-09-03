@@ -1,13 +1,18 @@
 import { FC } from 'react';
-import { Input } from 'theme-ui';
+import { Input, ThemeUIStyleObject } from 'theme-ui';
 
 interface MyInputProps {
     defaultValue?: string;
     placeholder?: string;
+    type?: string;
+    sx?: ThemeUIStyleObject;
+    variant?: string;
+    name: string;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const MyInput: FC<MyInputProps> = ({ defaultValue = '', placeholder = '' }) => (
-    <Input defaultValue={defaultValue} placeholder={placeholder} />
+const MyInput: FC<MyInputProps> = ({ defaultValue = '', placeholder = '', ...rest }) => (
+    <Input defaultValue={defaultValue} placeholder={placeholder} {...rest} />
 );
 
 export default MyInput;

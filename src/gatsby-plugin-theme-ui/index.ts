@@ -10,7 +10,7 @@ const theme = {
     },
     forms: {
         input: {
-            backgroundColor: 'green'
+            backgroundColor: 'white'
         }
     }
     

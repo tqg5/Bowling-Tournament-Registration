@@ -3,7 +3,7 @@ import { FC } from 'react';
 const style = {
     display: 'flex',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'flex-start'
 };
 
 interface RowProps {

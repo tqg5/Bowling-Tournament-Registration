@@ -1,17 +1,9 @@
-import MyInput from 'components/MyInput';
-import Form from 'components/Form';
+import AppEntry from 'components/AppEntry';
 
 const IndexPage = () => {
   return (
     <>
-      <div
-        sx={{
-          variant: 'div'
-        }}
-      >
-        hey
-      </div>
-      <Form />
+      <AppEntry />
     </>
   )
 };

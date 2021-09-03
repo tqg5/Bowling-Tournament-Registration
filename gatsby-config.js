@@ -22,7 +22,7 @@ module.exports = {
         alias: {
           components: path.resolve(__dirname, './src/components')
         },
-        extensions: [ '.jpeg', '.ts', '.tsx' ]
+        extensions: [ '.jpeg', '.ts', '.tsx', '.json' ]
       }
     }
   ],
