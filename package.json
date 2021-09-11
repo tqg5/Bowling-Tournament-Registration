@@ -12,7 +12,10 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "eslint --ext .js,.ts,.tsx",
+    "typescript": "npx tsc"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
