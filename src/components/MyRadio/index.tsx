@@ -12,6 +12,7 @@ interface MyInputProps {
     sx?: ThemeUIStyleObject;
     defaultChecked?: boolean;
     variant?: string;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 const MyInput: FC<MyInputProps> = ({ name, value = SEX.MALE,  ...rest }) => (
