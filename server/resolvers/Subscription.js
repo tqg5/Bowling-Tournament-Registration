@@ -1,5 +1,8 @@
+const { pubSub } = require('../utils');
+
 function newLinkSubscribe(parent, args, context, info) {
-    return context.pubsub.asyncIterator("NEW_LINK")
+    console.log('pubSub',pubSub)
+    return pubSub.asyncIterator("NEW_LINK")
 }
 
 const newLink = {
@@ -10,5 +13,5 @@ const newLink = {
 };
 
 module.exports = {
-    newLink,
+    newLink
 };

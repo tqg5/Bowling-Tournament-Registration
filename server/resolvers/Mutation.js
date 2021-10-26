@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { APP_SECRET, getUserId } = require('../utils')
+const { APP_SECRET, pubSub } = require('../utils')
 
 async function signup(parent, args, context, info) {
   // 1
@@ -52,7 +52,7 @@ async function post(parent, args, context, info) {
     }
   });
 
-  context.pubsub.publish("NEW_LINK", newLink)
+  pubSub.publish("NEW_LINK", newLink)
 
   return newLink;
 }

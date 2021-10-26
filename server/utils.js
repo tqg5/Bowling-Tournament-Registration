@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const APP_SECRET = 'GraphQL-is-aw3some';
+const { PubSub } = require('graphql-subscriptions');
 
 function getTokenPayload(token) {
   return jwt.verify(token, APP_SECRET);
@@ -24,7 +25,10 @@ function getUserId(req, authToken) {
   throw new Error('Not authenticated');
 }
 
+const pubSub = new PubSub();
+
 module.exports = {
   APP_SECRET,
-  getUserId
+  getUserId,
+  pubSub
 };

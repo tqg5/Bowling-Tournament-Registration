@@ -15,7 +15,8 @@
     "clean": "gatsby clean",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "eslint --ext .js,.ts,.tsx",
-    "typescript": "npx tsc"
+    "typescript": "npx tsc",
+    "update-prisma": "npx prisma migrate dev && npx prisma generate"
   },
   "dependencies": {
     "@graphql-tools/schema": "^7.1.5",
