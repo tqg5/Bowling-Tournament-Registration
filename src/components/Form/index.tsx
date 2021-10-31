@@ -22,7 +22,9 @@ const Form = () => {
             <Box
                 variant='formWrapper'
                 as='form'
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={(e) => {
+                    e.preventDefault();
+                }}
             >
                 <Box>
                     <Row>

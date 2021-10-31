@@ -13,7 +13,8 @@ const theme = {
         label: {
             flex: 1,
             alignItems: 'center',
-            color: 'white'
+            color: 'white',
+            cursor: 'pointer'
         },
         firstName: {
             flex: 8
