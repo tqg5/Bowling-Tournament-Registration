@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+
 import { Input, ThemeUIStyleObject } from 'theme-ui';
 
 interface MyInputProps {
@@ -11,8 +12,9 @@ interface MyInputProps {
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const MyInput: FC<MyInputProps> = ({ defaultValue = '', placeholder = '', ...rest }) => (
-    <Input defaultValue={defaultValue} placeholder={placeholder} {...rest} />
-);
-
+const MyInput = React.forwardRef<HTMLInputElement, MyInputProps>(({defaultValue, placeholder, ...rest}, ref) => {
+    return (
+    <Input ref={ref} defaultValue={defaultValue} placeholder={placeholder} {...rest} />
+    )
+});
 export default MyInput;

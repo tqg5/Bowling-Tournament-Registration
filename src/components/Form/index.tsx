@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import {
     Box,
     ThemeProvider,
@@ -17,6 +18,9 @@ import Zipcode from './Zipcode';
 import USBCNumber from './USBCNumber';
 
 const Form = () => {
+    const firstName = useRef(null);
+    const lastName = useRef(null);
+
     return (
         <ThemeProvider theme={theme}>
             <Box
@@ -24,11 +28,14 @@ const Form = () => {
                 as='form'
                 onSubmit={(e) => {
                     e.preventDefault();
+                    const c = firstName.current;
+debugger
+                    
                 }}
             >
                 <Box>
                     <Row>
-                        <NameGender />
+                        <NameGender firstNameRef={firstName} />
                     </Row>
                     <Row>
                         <Flex>

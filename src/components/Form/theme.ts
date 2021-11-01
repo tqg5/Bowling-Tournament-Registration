@@ -1,4 +1,10 @@
 const theme = {
+    buttons: {
+        primary: {
+            color: 'blue',
+            backgroundColor: 'white'
+        }
+    },
     forms: {
         input: {
             backgroundColor: 'green',
@@ -16,6 +22,7 @@ const theme = {
             color: 'white',
             cursor: 'pointer'
         },
+        
         firstName: {
             flex: 8
         },
