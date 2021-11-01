@@ -1,7 +1,7 @@
 import { FC, useRef, ReactElement } from 'react';
 import { Select } from 'theme-ui';
 import { useDispatch } from 'react-redux';
-import * as states from './states.json';
+import states, { StatesType } from './states';
 import constants from '../constants';
 import { saveState } from 'store/form/slice';
 
@@ -10,13 +10,11 @@ export interface StateType {
     value: string;
 };
 
-type statesSchema = typeof import('./states.json');
-
 const createStatesArray = (): ReactElement[] => {
     const map: ReactElement[] = [];
+    let key: keyof StatesType;
 
-    let key: keyof typeof states;
-    for(key in states as statesSchema) {
+    for(key in states as StatesType) {
         map.push(<option value={key}>{states[key]}</option>);
     };
 

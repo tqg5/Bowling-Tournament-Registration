@@ -12,7 +12,11 @@ import {
     saveSex
 } from 'store/form/slice';
 
-const NameGender: FC = () => {
+interface NameGenderProps {
+    firstNameRef: React.ForwardedRef<HTMLInputElement>
+};
+
+const NameGender = ({ firstNameRef }: NameGenderProps) => {
     const dispatch = useDispatch();
 
     return (
@@ -25,6 +29,7 @@ const NameGender: FC = () => {
                 sx={{
                     variant: 'forms.firstName'
                 }}
+                ref={firstNameRef}
                 name={constants.firstName}
                 placeholder='First Name'
                 onChange={({ target: { value }}) => {
