@@ -13,10 +13,18 @@ import {
 } from 'store/form/slice';
 
 interface NameGenderProps {
-    firstNameRef: React.ForwardedRef<HTMLInputElement>
+    firstNameRef: React.ForwardedRef<HTMLInputElement>,
+    lastNameRef: React.ForwardedRef<HTMLInputElement>,
+    maleRef: React.ForwardedRef<HTMLInputElement>,
+    femaleRef: React.ForwardedRef<HTMLInputElement>
 };
 
-const NameGender = ({ firstNameRef }: NameGenderProps) => {
+const NameGender = ({
+    firstNameRef,
+    lastNameRef,
+    maleRef,
+    femaleRef
+}: NameGenderProps) => {
     const dispatch = useDispatch();
 
     return (
@@ -40,6 +48,7 @@ const NameGender = ({ firstNameRef }: NameGenderProps) => {
                 sx={{
                     variant: 'forms.lastName'
                 }}
+                ref={lastNameRef}
                 name={constants.lastName}
                 placeholder='Last Name'
                 onChange={({ target: { value }}) => {
@@ -48,6 +57,7 @@ const NameGender = ({ firstNameRef }: NameGenderProps) => {
             />
             <Flex>
                 <MyRadio
+                    ref={maleRef}
                     name={constants.sex}
                     value={SEX.MALE}
                     defaultChecked={true}
@@ -56,6 +66,7 @@ const NameGender = ({ firstNameRef }: NameGenderProps) => {
                     }}
                 />
                 <MyRadio
+                    ref={maleRef}
                     name={constants.sex}
                     value={SEX.FEMALE}
                     onChange={({ target: { value }}) => {

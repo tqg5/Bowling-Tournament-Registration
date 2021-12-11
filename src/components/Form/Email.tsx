@@ -1,15 +1,16 @@
-import { FC } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import MyInput from 'components/MyInput';
 import constants from './constants'
 import { saveEmail } from 'store/form/slice';
 
-const Email: FC = () => {
+const Email = React.forwardRef<HTMLInputElement>((props, ref) => {
     const dispatch = useDispatch();
 
     return (
         <>
             <MyInput
+                ref={ref}
                 sx={{
                     "&::placeholder": {
                         color: 'white'
@@ -24,6 +25,6 @@ const Email: FC = () => {
             />
         </>
     )
-}
+});
 
 export default Email;

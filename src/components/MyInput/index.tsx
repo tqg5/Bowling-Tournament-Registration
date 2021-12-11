@@ -14,7 +14,7 @@ interface MyInputProps {
 
 const MyInput = React.forwardRef<HTMLInputElement, MyInputProps>(({defaultValue, placeholder, ...rest}, ref) => {
     return (
-    <Input ref={ref} defaultValue={defaultValue} placeholder={placeholder} {...rest} />
+        <Input ref={ref} defaultValue={defaultValue} placeholder={placeholder} {...rest} />
     )
 });
 export default MyInput;

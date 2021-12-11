@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Radio, ThemeUIStyleObject, Label } from 'theme-ui';
 
 export enum SEX {
@@ -15,11 +15,14 @@ interface MyInputProps {
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const MyInput: FC<MyInputProps> = ({ name, value = SEX.MALE,  ...rest }) => (
-    <Label>
-        <Radio name={name} value={SEX.MALE} {...rest} />
-        {value}
-    </Label>
-)
+
+const MyInput = React.forwardRef<HTMLInputElement, MyInputProps>(({ name, value = SEX.MALE,  ...rest }, ref) => {
+    return (
+        <Label>
+            <Radio name={name} value={SEX.MALE} {...rest} />
+            {value}
+        </Label>
+    );
+});
 
 export default MyInput;

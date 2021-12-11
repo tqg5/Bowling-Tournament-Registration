@@ -22,7 +22,8 @@ module.exports = {
         alias: {
           components: path.resolve(__dirname, './src/components'),
           store: path.resolve(__dirname, './src/store'),
-          slices: path.resolve(__dirname, './src/store/slices')
+          slices: path.resolve(__dirname, './src/store/slices'),
+          utils: path.resolve(__dirname, './src/utils')
         },
         extensions: [ '.jpeg', '.ts', '.tsx', '.json' ]
       }
