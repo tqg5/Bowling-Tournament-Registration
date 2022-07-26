@@ -179,16 +179,15 @@ const Form = () => {
 
             createUser(obj).then(result => {
                 if(result.error) {
-                    debugger
                     return;
                 }
 
                 if(firstNameRef.current) {
-                    firstNameRef.current.checked = true;
+                    firstNameRef.current.value = '';
                 }
 
                 if(lastNameRef.current) {
-                    lastNameRef.current.checked = true;
+                    lastNameRef.current.value = '';
                 }
 
                 if(maleRef.current) {
