@@ -13,7 +13,7 @@ async function createUser(parent, args, context, info) {
       email: args.email,
       phoneNumber: args.phoneNumber,
       age: args.age,
-      houseNumber: args.houseNumber,
+      address: args.address,
       city: args.city,
       state: args.state,
       zipcode: args.zipcode,

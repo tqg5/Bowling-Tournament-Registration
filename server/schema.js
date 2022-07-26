@@ -18,7 +18,7 @@ module.exports = `
       email: String!,
       phoneNumber: String!,
       age: Int!,
-      houseNumber: String!,
+      address: String!,
       city: String!,
       state: State!,
       zipcode: String!,
@@ -62,7 +62,7 @@ module.exports = `
     email: String!
     phoneNumber: String!
     age: Int!
-    houseNumber: String!
+    address: String!
     city: String!
     State: State!
     zipcode: String!

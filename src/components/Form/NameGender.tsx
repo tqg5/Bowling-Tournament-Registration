@@ -1,9 +1,6 @@
-import { FC } from 'react';
 import { Flex } from 'theme-ui';
 import MyInput from 'components/MyInput';
-import MyRadio, {
-    SEX
-} from 'components/MyRadio';
+import MyRadio, { SEX } from 'components/MyRadio';
 import constants from './constants';
 import { useDispatch } from 'react-redux';
 import {
@@ -11,17 +8,22 @@ import {
     saveLastName,
     saveSex
 } from 'store/form/slice';
+import { Payload } from './hooks/useFormError';
 
 interface NameGenderProps {
     firstNameRef: React.ForwardedRef<HTMLInputElement>,
+    firstNameErrorPayload: Payload;
     lastNameRef: React.ForwardedRef<HTMLInputElement>,
+    lastNameErrorPayload: Payload
     maleRef: React.ForwardedRef<HTMLInputElement>,
     femaleRef: React.ForwardedRef<HTMLInputElement>
 };
 
 const NameGender = ({
     firstNameRef,
+    firstNameErrorPayload,
     lastNameRef,
+    lastNameErrorPayload,
     maleRef,
     femaleRef
 }: NameGenderProps) => {
@@ -37,37 +39,41 @@ const NameGender = ({
                 sx={{
                     variant: 'forms.firstName'
                 }}
-                ref={firstNameRef}
-                name={constants.firstName}
+                forwardedRef={firstNameRef}
+                name={constants.labels.firstName}
                 placeholder='First Name'
                 onChange={({ target: { value }}) => {
                     dispatch(saveFirstName(value));
                 }}
+                hasError={!firstNameErrorPayload.isValid}
             />
             <MyInput
                 sx={{
                     variant: 'forms.lastName'
                 }}
-                ref={lastNameRef}
-                name={constants.lastName}
+                forwardedRef={lastNameRef}
+                name={constants.labels.lastName}
                 placeholder='Last Name'
                 onChange={({ target: { value }}) => {
                     dispatch(saveLastName(value));
                 }}
+                hasError={!lastNameErrorPayload.isValid}
             />
             <Flex>
                 <MyRadio
-                    ref={maleRef}
-                    name={constants.sex}
+                    forwardedRef={maleRef}
+                    label={SEX.MALE}
+                    name={constants.labels.sex}
                     value={SEX.MALE}
                     defaultChecked={true}
                     onChange={({ target: { value }}) => {
-                        dispatch(saveSex(value as SEX));
+                            dispatch(saveSex(value as SEX));
                     }}
                 />
                 <MyRadio
-                    ref={maleRef}
-                    name={constants.sex}
+                    forwardedRef={femaleRef}
+                    label={SEX.FEMALE}
+                    name={constants.labels.sex}
                     value={SEX.FEMALE}
                     onChange={({ target: { value }}) => {
                         dispatch(saveSex(value as SEX));

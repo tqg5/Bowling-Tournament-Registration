@@ -1,4 +1,4 @@
-import { FC, useRef, ReactElement } from 'react';
+import { useRef, ReactElement } from 'react';
 import { Select } from 'theme-ui';
 import { useDispatch } from 'react-redux';
 import states, { StatesType } from './states';
@@ -21,16 +21,21 @@ const createStatesArray = (): ReactElement[] => {
     return map;
 }
 
-const State: FC = () => {
+const State = ({
+    forwardedRef
+}: {
+    forwardedRef: React.ForwardedRef<HTMLSelectElement>;
+}) => {
     const statesRef = useRef(createStatesArray());
     const dispatch = useDispatch();
 
     return (
         <Select
+            ref={forwardedRef}
             sx={{
                 variant: 'forms.state'
             }}
-            name={constants.state}
+            name={constants.labels.state}
             onChange={({ target: { value: key }}) => {
                 const obj = {
                     key,

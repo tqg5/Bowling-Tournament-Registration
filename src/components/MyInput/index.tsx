@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { Input, ThemeUIStyleObject } from 'theme-ui';
 
-interface MyInputProps {
+export interface MyInputProps {
     defaultValue?: string;
     placeholder?: string;
     type?: string;
@@ -10,11 +10,20 @@ interface MyInputProps {
     variant?: string;
     name: string;
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    forwardedRef: React.ForwardedRef<HTMLInputElement>;
+    hasError?: boolean;
 };
 
-const MyInput = React.forwardRef<HTMLInputElement, MyInputProps>(({defaultValue, placeholder, ...rest}, ref) => {
+const errorCSS = {
+    borderColor: 'red'
+}
+
+const MyInput = ({defaultValue, placeholder, forwardedRef, hasError, ...rest}: MyInputProps) => {
     return (
-        <Input ref={ref} defaultValue={defaultValue} placeholder={placeholder} {...rest} />
+        <Input 
+            sx={hasError ? errorCSS : {}}
+            ref={forwardedRef} defaultValue={defaultValue} placeholder={placeholder} {...rest} />
     )
-});
+};
+
 export default MyInput;

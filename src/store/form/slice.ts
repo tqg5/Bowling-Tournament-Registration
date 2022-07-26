@@ -20,7 +20,7 @@ type StateInterface =  {
 const initialState: StateInterface = {
     firstName: null,
     lastName: null,
-    sex: null,
+    sex: SEX.MALE,
     email: null,
     phoneNumber: null,
     age: null,
@@ -35,12 +35,12 @@ const formsSlice = createSlice({
     name: 'form',
     initialState,
     reducers: {
-        setFirstName: (state, action: PayloadAction<{ firstName: string }>) => {
+        setFirstName: (state, action: PayloadAction<{ firstName: string | null }>) => {
             const { firstName } = action.payload;
 
             state.firstName = firstName;
         },
-        setLastName: (state, action: PayloadAction<{ lastName: string }>) => {
+        setLastName: (state, action: PayloadAction<{ lastName: string | null }>) => {
             const { lastName } = action.payload;
 
             state.lastName = lastName;
@@ -50,42 +50,42 @@ const formsSlice = createSlice({
 
             state.sex = sex;
         },
-        setEmail: (state, action: PayloadAction<{ email: string }>) => {
+        setEmail: (state, action: PayloadAction<{ email: string | null }>) => {
             const { email } = action.payload;
 
             state.email = email;
         },
-        setPhoneNumber: (state, action: PayloadAction<{ phoneNumber: string }>) => {
+        setPhoneNumber: (state, action: PayloadAction<{ phoneNumber: string | null }>) => {
             const { phoneNumber } = action.payload;
 
             state.phoneNumber = phoneNumber;
         },
-        setAge: (state, action: PayloadAction<{ age: number }>) => {
+        setAge: (state, action: PayloadAction<{ age: number | null }>) => {
             const { age } = action.payload;
 
             state.age = age;
         },
-        setAddress: (state, action: PayloadAction<{ address: string }>) => {
+        setAddress: (state, action: PayloadAction<{ address: string | null }>) => {
             const { address } = action.payload;
 
             state.address = address;
         },
-        setCity: (state, action: PayloadAction<{ city: string }>) => {
+        setCity: (state, action: PayloadAction<{ city: string | null }>) => {
             const { city } = action.payload;
 
             state.city = city;
         },
-        setState: (state, action: PayloadAction<{ stateParam: StateType }>) => {
+        setState: (state, action: PayloadAction<{ stateParam: StateType | null }>) => {
             const { stateParam } = action.payload;
 
             state.state = stateParam;
         },
-        setZipcode: (state, action: PayloadAction<{ zipcode: string }>) => {
+        setZipcode: (state, action: PayloadAction<{ zipcode: string | null }>) => {
             const { zipcode } = action.payload;
 
             state.zipcode = zipcode;
         },
-        setUSBCNumber: (state, action: PayloadAction<{ usbcNumber: string }>) => {
+        setUSBCNumber: (state, action: PayloadAction<{ usbcNumber: string | null }>) => {
             const { usbcNumber } = action.payload;
 
             state.usbcNumber = usbcNumber;
@@ -109,11 +109,11 @@ export const {
 
 export default formsSlice.reducer;
 
-export const saveFirstName = (firstName: string): AppThunk => (dispatch) => {
+export const saveFirstName = (firstName: string | null): AppThunk => (dispatch) => {
     dispatch(setFirstName({ firstName }));
 };
 
-export const saveLastName = (lastName: string): AppThunk => (dispatch) => {
+export const saveLastName = (lastName: string | null): AppThunk => (dispatch) => {
     dispatch(setLastName({ lastName }));
 };
 
@@ -121,34 +121,34 @@ export const saveSex = (sex: SEX): AppThunk => (dispatch) => {
     dispatch(setSex({ sex }));
 };
 
-export const saveEmail = (email: string): AppThunk => (dispatch) => {
+export const saveEmail = (email: string | null): AppThunk => (dispatch) => {
     dispatch(setEmail({ email }));
 };
 
-export const savePhoneNumber = (phoneNumber: string): AppThunk => (dispatch) => {
+export const savePhoneNumber = (phoneNumber: string | null): AppThunk => (dispatch) => {
     dispatch(setPhoneNumber({ phoneNumber }));
 };
 
-export const saveAge = (age: number): AppThunk => (dispatch) => {
+export const saveAge = (age: number | null): AppThunk => (dispatch) => {
     dispatch(setAge({ age }));
 };
 
-export const saveAddress = (address: string): AppThunk => (dispatch) => {
+export const saveAddress = (address: string | null): AppThunk => (dispatch) => {
     dispatch(setAddress({ address }));
 };
 
-export const saveCity = (city: string): AppThunk => (dispatch) => {
+export const saveCity = (city: string | null): AppThunk => (dispatch) => {
     dispatch(setCity({ city }));
 };
 
-export const saveState = (state: StateType): AppThunk => (dispatch) => {
+export const saveState = (state: StateType | null): AppThunk => (dispatch) => {
     dispatch(setState({ stateParam: state }));
 };
 
-export const saveZipcode = (zipcode: string): AppThunk => (dispatch) => {
+export const saveZipcode = (zipcode: string | null): AppThunk => (dispatch) => {
     dispatch(setZipcode({ zipcode }));
 };
 
-export const saveUSBCNumber = (usbcNumber: string): AppThunk => (dispatch) => {
+export const saveUSBCNumber = (usbcNumber: string | null): AppThunk => (dispatch) => {
     dispatch(setUSBCNumber({ usbcNumber }));
 };

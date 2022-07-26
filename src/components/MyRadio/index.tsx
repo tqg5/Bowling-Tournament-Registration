@@ -6,23 +6,25 @@ export enum SEX {
     FEMALE = 'Female'
 };
 
-interface MyInputProps {
+export interface MyRadioProps {
     name: string;
-    value: SEX;
+    value: string;
     sx?: ThemeUIStyleObject;
     defaultChecked?: boolean;
     variant?: string;
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    forwardedRef: React.ForwardedRef<HTMLInputElement>;
+    label: SEX;
 };
 
 
-const MyInput = React.forwardRef<HTMLInputElement, MyInputProps>(({ name, value = SEX.MALE,  ...rest }, ref) => {
+const MyRadio = ({ name, value = SEX.MALE, forwardedRef, label,  ...rest }: MyRadioProps) => {
     return (
         <Label>
-            <Radio name={name} value={SEX.MALE} {...rest} />
-            {value}
+            <Radio ref={forwardedRef} name={name} value={value} {...rest} />
+            {label}
         </Label>
     );
-});
+};
 
-export default MyInput;
+export default MyRadio;

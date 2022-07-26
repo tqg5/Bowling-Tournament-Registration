@@ -10,6 +10,9 @@ const theme = {
             backgroundColor: 'green',
             "&::placeholder": {
                 color: 'white'
+            },
+            error: {
+                backgroundColor: 'red'
             }
         },
         select: {
@@ -60,6 +63,11 @@ const theme = {
     nameGenderWrapper: {
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    text: {
+        status: {
+            color: 'green'
+        }
     }
 }
 
