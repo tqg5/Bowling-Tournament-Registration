@@ -6,6 +6,7 @@ interface UseFormErrorProps {
     email?: string;
     phoneNumber?: string;
     age?: string;
+    average?: string;
     address?: string;
     city?: string;
     zipcode?: string;
@@ -91,6 +92,20 @@ const validateAge = (val: string | undefined): Payload => {
     };
 }
 
+const validateAverage = (val: string | undefined): Payload => {
+    if(validateEmpty(val)) {
+        return {
+            isValid: false,
+            message: constants.messages.average[KEYS.EMPTY]
+        }
+    }
+
+    return {
+        isValid: true,
+        message: null
+    };
+}
+
 const validateAddress = (val: string | undefined): Payload => {
     if(validateEmpty(val)) {
         return {
@@ -153,6 +168,7 @@ const useFormError = ({
     email,
     phoneNumber,
     age,
+    average,
     address,
     city,
     zipcode,
@@ -164,6 +180,7 @@ const useFormError = ({
         emailErrorPayload: validateEmail(email),
         phoneNumberErrorPayload: validatePhoneNumber(phoneNumber),
         ageErrorPayload: validateAge(age),
+        averageErrorPayload: validateAverage(average),
         addressErrorPayload: validateAddress(address),
         cityErrorPayload: validateCity(city),
         zipcodeErrorPayload: validateZipcode(zipcode),

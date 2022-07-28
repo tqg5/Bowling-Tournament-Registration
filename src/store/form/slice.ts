@@ -10,6 +10,7 @@ type StateInterface =  {
     email: string | null;
     phoneNumber: string | null;
     age: number | null;
+    average: number | null;
     address: string | null;
     city: string | null;
     state: StateType | null;
@@ -24,6 +25,7 @@ const initialState: StateInterface = {
     email: null,
     phoneNumber: null,
     age: null,
+    average: null,
     address: null,
     city: null,
     state: null,
@@ -65,6 +67,11 @@ const formsSlice = createSlice({
 
             state.age = age;
         },
+        setAverage: (state, action: PayloadAction<{ average: number | null }>) => {
+            const { average } = action.payload;
+
+            state.average = average;
+        },
         setAddress: (state, action: PayloadAction<{ address: string | null }>) => {
             const { address } = action.payload;
 
@@ -100,6 +107,7 @@ export const {
     setEmail,
     setPhoneNumber,
     setAge,
+    setAverage,
     setAddress,
     setCity,
     setState,
@@ -131,6 +139,10 @@ export const savePhoneNumber = (phoneNumber: string | null): AppThunk => (dispat
 
 export const saveAge = (age: number | null): AppThunk => (dispatch) => {
     dispatch(setAge({ age }));
+};
+
+export const saveAverage = (average: number | null): AppThunk => (dispatch) => {
+    dispatch(setAverage({ average }));
 };
 
 export const saveAddress = (address: string | null): AppThunk => (dispatch) => {

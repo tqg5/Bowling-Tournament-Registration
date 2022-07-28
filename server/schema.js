@@ -19,6 +19,7 @@ module.exports = `
       phoneNumber: String!,
       age: Int!,
       address: String!,
+      average: Int!,
       city: String!,
       state: State!,
       zipcode: String!,
@@ -32,7 +33,7 @@ module.exports = `
   }
 
   type Subscription {
-    newLink: Link
+    newUser: User
   }
 
   type Link {
@@ -63,6 +64,7 @@ module.exports = `
     phoneNumber: String!
     age: Int!
     address: String!
+    average: Int!
     city: String!
     State: State!
     zipcode: String!

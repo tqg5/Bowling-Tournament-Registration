@@ -95,6 +95,7 @@ model User {
   phoneNumber String
   age         Int
   address     String
+  average     Int
   city        String
   state       State
   zipcode     String

@@ -1,17 +1,17 @@
 const { pubSub } = require('../utils');
 
-function newLinkSubscribe(parent, args, context, info) {
+function newUserSubscribe(parent, args, context, info) {
     console.log('pubSub',pubSub)
-    return pubSub.asyncIterator("NEW_LINK")
+    return pubSub.asyncIterator("NEW_USER")
 }
 
-const newLink = {
-    subscribe: newLinkSubscribe,
+const newUser = {
+    subscribe: newUserSubscribe,
     resolve: payload => {
         return payload
     },
 };
 
 module.exports = {
-    newLink
+    newUser
 };

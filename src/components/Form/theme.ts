@@ -41,6 +41,9 @@ const theme = {
         age: {
             flex: 1
         },
+        average: {
+            flex: 1.2
+        },
         city: {
             flex: 5
         },

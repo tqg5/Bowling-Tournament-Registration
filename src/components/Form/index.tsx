@@ -17,6 +17,7 @@ import {
     getEmail,
     getPhoneNumber,
     getAge,
+    getAverage,
     getAddress,
     getCity,
     getState,
@@ -29,6 +30,7 @@ import Email from './Email';
 import theme from './theme';
 import PhoneNumber from './PhoneNumber';
 import Age from './Age';
+import Average from './Average';
 import Address from './Address';
 import City from './City';
 import State from './State';
@@ -41,6 +43,7 @@ import {
     saveEmail,
     savePhoneNumber,
     saveAge,
+    saveAverage,
     saveAddress,
     saveCity,
     saveState,
@@ -59,6 +62,7 @@ const CreateUserMut = `
         $phoneNumber: String!,
         $age: Int!,
         $address: String!,
+        $average: Int!,
         $city: String!,
         $state: State!,
         $zipcode: String!,
@@ -71,6 +75,7 @@ const CreateUserMut = `
       email: $email,
       phoneNumber: $phoneNumber,
       age: $age,
+      average: $average,
       address: $address,
       city: $city,
       state: $state,
@@ -85,7 +90,13 @@ const CreateUserMut = `
 
 const addMessage = (msg: string | null) => msg ? <div>{msg}</div> : null
 
-const Form = () => {
+interface FormProps {
+    setDidCreateUser: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Form = ({
+    setDidCreateUser
+}: FormProps) => {
     const firstNameRef = useRef<HTMLInputElement | null>(null);
     const lastNameRef = useRef<HTMLInputElement | null>(null);
     const maleRef = useRef<HTMLInputElement | null>(null);
@@ -93,6 +104,7 @@ const Form = () => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const phoneNumberRef = useRef<HTMLInputElement | null>(null);
     const ageRef = useRef<HTMLInputElement | null>(null);
+    const averageRef = useRef<HTMLInputElement | null>(null);
     const addressRef = useRef<HTMLInputElement | null>(null);
     const cityRef = useRef<HTMLInputElement | null>(null);
     const stateRef = useRef<HTMLSelectElement | null>(null);
@@ -105,6 +117,7 @@ const Form = () => {
     const email = useSelector(getEmail);
     const phoneNumber = useSelector(getPhoneNumber);
     const age = useSelector(getAge);
+    const average = useSelector(getAverage);
     const address = useSelector(getAddress);
     const city = useSelector(getCity);
     const state = useSelector(getState);
@@ -119,6 +132,7 @@ const Form = () => {
         emailErrorPayload,
         phoneNumberErrorPayload,
         ageErrorPayload,
+        averageErrorPayload,
         addressErrorPayload,
         cityErrorPayload,
         zipcodeErrorPayload,
@@ -129,13 +143,13 @@ const Form = () => {
         email: emailRef.current?.value,
         phoneNumber: phoneNumberRef.current?.value,
         age: ageRef.current?.value,
+        average: averageRef.current?.value,
         address: addressRef.current?.value,
         city: cityRef.current?.value,
         zipcode: zipcodeRef.current?.value,
         usbcNumber: usbcNumberRef.current?.value
     });
     const [statusMessage, setStatusMessage] = useState<(ThemeUIJSX.Element | null)[]>([]);
-    const [hasErrorMessage, setHasErrorMessage] = useState<boolean>(false);
     const [createUserResult, createUser] = useMutation(CreateUserMut);
 
     const { data, fetching, error } = createUserResult;
@@ -152,6 +166,7 @@ const Form = () => {
             addMessage(emailErrorPayload.message),
             addMessage(phoneNumberErrorPayload.message),
             addMessage(ageErrorPayload.message),
+            addMessage(averageErrorPayload.message),
             addMessage(addressErrorPayload.message),
             addMessage(cityErrorPayload.message),
             addMessage(zipcodeErrorPayload.message),
@@ -170,6 +185,7 @@ const Form = () => {
                 email,
                 phoneNumber,
                 age,
+                average,
                 address,
                 city,
                 state: state?.key,
@@ -210,6 +226,10 @@ const Form = () => {
                     ageRef.current.value = '';
                 }
 
+                if(averageRef.current) {
+                    averageRef.current.value = '';
+                }
+
                 if(addressRef.current) {
                     addressRef.current.value = '';
                 }
@@ -236,6 +256,7 @@ const Form = () => {
                 saveEmail(null);
                 savePhoneNumber(null);
                 saveAge(null);
+                saveAverage(null);
                 saveAddress(null);
                 saveCity(null);
                 saveState(null);
@@ -243,6 +264,7 @@ const Form = () => {
                 saveUSBCNumber(null);
 
                 setStatusMessage([<div>Entry saved successfully!</div>]);
+                setDidCreateUser(true);
             }).catch(e => {
                 console.error(e);
             })
@@ -256,6 +278,7 @@ const Form = () => {
         emailErrorPayload.message,
         phoneNumberErrorPayload.message,
         ageErrorPayload.message,
+        averageErrorPayload.message,
         addressErrorPayload.message,
         cityErrorPayload.message,
         zipcodeErrorPayload.message,
@@ -271,8 +294,6 @@ const Form = () => {
                     e.preventDefault();
 
                     setHasSubmitted(true);
-                    
-                    
                 }}
             >
                 <Box>
@@ -296,6 +317,7 @@ const Form = () => {
                             <Email forwardedRef={emailRef} payload={emailErrorPayload} />
                             <PhoneNumber forwardedRef={phoneNumberRef} payload={phoneNumberErrorPayload} />
                             <Age forwardedRef={ageRef} payload={ageErrorPayload} />
+                            <Average forwardedRef={averageRef} payload={averageErrorPayload} />
                         </Flex>
                     </Row>
                     <Row>

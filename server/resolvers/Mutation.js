@@ -5,7 +5,7 @@ const { APP_SECRET, pubSub } = require('../utils')
 async function createUser(parent, args, context, info) {
   debugger
 
-  const newLink = await context.prisma.user.create({
+  const newUser = await context.prisma.user.create({
     data: {
       firstName: args.firstName,
       lastName: args.lastName,
@@ -14,6 +14,7 @@ async function createUser(parent, args, context, info) {
       phoneNumber: args.phoneNumber,
       age: args.age,
       address: args.address,
+      average: args.average,
       city: args.city,
       state: args.state,
       zipcode: args.zipcode,
@@ -21,9 +22,9 @@ async function createUser(parent, args, context, info) {
     }
   });
 
-  //pubSub.publish("NEW_LINK", newLink)
+  pubSub.publish("NEW_USER", newUser)
 
-  return newLink;
+  return newUser;
 }
 
 async function signup(parent, args, context, info) {

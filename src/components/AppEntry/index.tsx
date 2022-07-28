@@ -1,10 +1,10 @@
 import { Box } from 'theme-ui';
-import Form from 'components/Form';
+import Tabs from 'components/Tabs';
 
 const AppEntry = () => {
   return (
     <Box p={4}>
-      <Form />
+      <Tabs />
     </Box>
   )
 };

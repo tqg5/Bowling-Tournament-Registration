@@ -10,6 +10,7 @@ export default {
         email: 'email',
         phoneNumber: 'phoneNumber',
         age: 'age',
+        average: 'average',
         address: 'address',
         city: 'city',
         state: 'state',
@@ -31,6 +32,9 @@ export default {
         },
         age: {
             [KEYS.EMPTY]: `Age can't be empty`
+        },
+        average: {
+            [KEYS.EMPTY]: `Average can't be empty`
         },
         address: {
             [KEYS.EMPTY]: `Address can't be empty`
